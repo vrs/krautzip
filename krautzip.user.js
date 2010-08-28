@@ -66,7 +66,7 @@ function zip_all() {
         if (ratio < 3) {
             // everything went better than expected
         } else {
-            thisPost.innerHTML = '<span style="color:#ff0000; font-weight: bold">(ZIP)</span>';
+            thisPost.innerHTML = '<span style="color:#ff0000; font-weight: bold" title="'+ postText.substring(0,200) + (postText.length > 200 ? '[...]' : '') +'">(ZIP)</span>';
         }
     }
 }
