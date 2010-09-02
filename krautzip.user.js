@@ -54,7 +54,7 @@ function zip_all() {
         XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,
         null);
 
-    var thisPost;
+    var thisPost, newContent;
     for (var i = 0; i < allPosts.snapshotLength; i++) {
         thisPost = allPosts.snapshotItem(i);
         postText = thisPost.innerHTML;
@@ -63,10 +63,18 @@ function zip_all() {
             continue;
         }
         ratio = postText.length / lzw_encode(postText).length;
-        if (ratio < 3) {
+        if (ratio < 4) {
             // everything went better than expected
         } else {
-            thisPost.innerHTML = '<span style="color:#ff0000; font-weight: bold" title="'+ postText.substring(0,200) + (postText.length > 200 ? '[...]' : '') +'">(ZIP)</span>';
+            while (thisPost.hasChildNodes()) {
+                thisPost.removeChild(thisPost.firstChild);
+            }
+            newContent = document.createElement('span');
+            newContent.style.color = "#ff0000";
+            newContent.style.fontWeight = "bold";
+            newContent.setAttribute('title', postText.substring(0,200) + (postText.length > 200 ? '[...]' : ''));
+            newContent.appendChild(document.createTextNode('(ZIP)'));
+            thisPost.appendChild(newContent);
         }
     }
 }
