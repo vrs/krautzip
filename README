@@ -1,4 +1,3 @@
-git://gist.github.com/537033.git
-Every Post on http://krautchan.net is compressed using LZW. If the ratio of content to compressed content exceeds 3, the post is considered to be redundant spam and replaced by "(ZIP)".
+Every Post on http://krautchan.net is compressed using LZW. If the ratio of content to compressed content exceeds a certain level, the post is considered to be redundant spam and replaced by "(ZIP)".
 
 http://userscripts.org/scripts/show/84029
